@@ -1,0 +1,86 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# dependencies
+/node_modules
+
+# production build
+/dist
+/build
+
+# environment variables
+.env
+.env.*.local
+.env.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# TypeScript
+*.tsbuildinfo
+
+# testing
+/coverage
+
+# eslint cache
+.eslintcache
+
+# parcel-bundler
+.cache/
+
+# vercel
+.vercel
+
+# local development SSL certs
+*.pem
+
+# output of 'npm pack'
+*.tgz
+
+# storybook
+out/
+storybook-static/
+
+# next.js (if accidentally used)
+/.next
+
+# backup files
+*.bak
+*.orig
+
+# optional: ignore local git hooks
+.husky/_/
+
