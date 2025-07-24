@@ -36,16 +36,23 @@ export default function Login() {
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   try {
-    const res = await login(formData); // API call
-    dispatch(setUser(res.user)); // This should set isAuthenticated = true
+    const res = await login(formData);
+    dispatch(setUser(res.user));
     toast.success('Login successful!');
     navigate('/');
   } catch (error: any) {
-    const message =
-      error.response?.data?.message || 'Login failed. Please check your credentials.';
-    toast.error(message);
+    const errorData = error.response?.data || 'Login failed. Please check your credentials.';
+
+    if (typeof errorData === 'object' && errorData.error) {
+      toast.error(errorData.error);
+    } else if (typeof errorData === 'string') {
+      toast.error(errorData);
+    } else {
+      toast.error('Login failed. Please try again.');
+    }
   }
 };
+
 
   // Animation variants (keep the same)
   const containerVariants = {

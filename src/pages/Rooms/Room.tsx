@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import api from '../../services/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 interface Room {
   id: string;
@@ -38,24 +41,31 @@ export default function Rooms() {
   };
 
   const handleCreateRoom = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newRoomName.trim()) return;
+  e.preventDefault();
+  if (!newRoomName.trim()) return;
 
-    try {
-      setLoading(true);
-      const response = await api.post('chat/rooms/', {
-        room_name: newRoomName,
-        room_type: roomType,
+  try {
+    setLoading(true);
+    const response = await api.post('chat/rooms/', {
+      name: newRoomName,       
+      room_type: roomType,     
+    });
+    const createdRoom = response.data;
+    navigate(`/chat/${createdRoom.id}`);
+  } catch (error: any) {
+    const errorData = error.response?.data;
+    if (errorData && typeof errorData === 'object') {
+      Object.values(errorData).forEach((messages: any) => {
+        messages.forEach((msg: string) => toast.error(msg)); 
       });
-      const createdRoom = response.data;
-      navigate(`/chat/${createdRoom.id}`);
-    } catch (error) {
-      console.error('Room creation failed:', error);
-      alert('Failed to create room');
-    } finally {
-      setLoading(false);
+    } else {
+      toast.error('Failed to create room');
     }
-  };
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   // Animation variants
   const containerVariants = {
@@ -197,6 +207,7 @@ export default function Rooms() {
       </main>
 
       <Footer />
+      <ToastContainer />
     </div>
   );
 }

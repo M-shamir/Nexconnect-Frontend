@@ -6,6 +6,7 @@ import { signup } from '../../services/authService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 
 export default function Signup() {
@@ -38,15 +39,27 @@ export default function Signup() {
   try {
     await signup(formData);
     toast.success('Signup successful!');
-    navigate('/login'); // Change this route as per your app
+    navigate('/login'); 
   } catch (error: any) {
-    const message = error.response?.data?.message || 'Signup failed. Please try again.';
-    toast.error(message);
+    const errorData = error.response?.data || 'Signup failed. Please try again.';
+    
+    if (typeof errorData === 'object') {
+      
+      Object.values(errorData).forEach((messages: any) => {
+        messages.forEach((msg: string) => {
+          toast.error(msg);
+        });
+      });
+    } else {
+      toast.error(errorData);
+    }
   }
 };
 
 
-  // Animation variants
+
+
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -233,7 +246,7 @@ export default function Signup() {
         </motion.div>
       </main>
       
-
+<ToastContainer />
     </div>
   );
 }
