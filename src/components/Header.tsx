@@ -2,17 +2,25 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../store/hooks';
-import { logout } from '../store/authSlice';
+import { logout as logoutAction } from '../store/authSlice';
+import { logout   } from '../services/authService';
 
 export default function Header() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
 
-  const handleLogout = () => {
-    dispatch(logout());
-    setIsProfileOpen(false);
-  };
+  const handleLogout = async () => {
+  try {
+    const res = await logout();
+    if (res.message === 'Successfully logged out') {
+      dispatch(logoutAction()); 
+      setIsProfileOpen(false);   // Close profile UI if needed
+    }
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+};
 
   return (
     <header className="bg-gray-800 border-b border-gray-700">

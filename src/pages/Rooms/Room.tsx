@@ -131,7 +131,7 @@ export default function Rooms() {
                 className="px-4 py-2 rounded-lg bg-gray-800 text-white"
               >
                 <option value="chat">Chat</option>
-                <option value="video">Video</option>
+                
               </select>
               <motion.button
                 type="submit"

@@ -9,3 +9,8 @@ export const signup = async (data: SignUpData): Promise<AuthResponse> => {
   const response = await api.post<AuthResponse>('auth/signup/', data);
   return response.data;
 };
+
+export const logout = async (): Promise<{ message: string }> => {
+  const response = await api.post('auth/logout/');
+  return response.data;
+};
