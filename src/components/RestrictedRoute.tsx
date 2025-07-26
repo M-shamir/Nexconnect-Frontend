@@ -1,9 +1,9 @@
-// src/components/RestrictedRoute.tsx
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../store/hooks';
+import type { ReactElement } from 'react';
 
 interface Props {
-  children: JSX.Element;
+  children: ReactElement;
 }
 
 export default function RestrictedRoute({ children }: Props) {

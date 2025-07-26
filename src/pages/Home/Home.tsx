@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { easeOut } from 'framer-motion';
 
 export default function Home() {
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function Home() {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -43,7 +44,7 @@ export default function Home() {
       transition: {
         duration: 0.3,
         yoyo: Infinity,
-        ease: "easeOut"
+        ease: easeOut
       }
     },
     tap: {

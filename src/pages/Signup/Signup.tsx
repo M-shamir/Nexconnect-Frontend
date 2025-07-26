@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { easeOut } from 'framer-motion';
 
 
 export default function Signup() {
@@ -78,7 +79,7 @@ export default function Signup() {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: easeOut
       }
     }
   };
@@ -89,7 +90,7 @@ export default function Signup() {
       boxShadow: "0px 5px 15px rgba(59, 130, 246, 0.3)",
       transition: {
         duration: 0.3,
-        ease: "easeOut"
+        ease: easeOut
       }
     },
     tap: {

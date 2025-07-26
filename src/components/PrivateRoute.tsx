@@ -1,14 +1,13 @@
-// src/components/PrivateRoute.tsx
 import { useAppSelector } from '../store/hooks';
 import { Navigate } from 'react-router-dom';
+import type { ReactElement } from 'react';
 
 interface Props {
-  children: JSX.Element;
+  children: ReactElement;
 }
 
 const PrivateRoute = ({ children }: Props) => {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
-
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
 

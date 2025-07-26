@@ -15,7 +15,7 @@ export default function Header() {
     const res = await logout();
     if (res.message === 'Successfully logged out') {
       dispatch(logoutAction()); 
-      setIsProfileOpen(false);   // Close profile UI if needed
+      setIsProfileOpen(false);   
     }
   } catch (error) {
     console.error("Logout failed:", error);

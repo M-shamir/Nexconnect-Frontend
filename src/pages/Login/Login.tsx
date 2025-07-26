@@ -7,6 +7,7 @@ import { useAppDispatch } from '../../store/hooks';
 import { setUser } from '../../store/authSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { easeOut } from 'framer-motion';
 
 export default function Login() {
   const dispatch = useAppDispatch();
@@ -73,7 +74,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       opacity: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease:easeOut
       }
     }
   };
@@ -84,7 +85,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       boxShadow: "0px 5px 15px rgba(59, 130, 246, 0.3)",
       transition: {
         duration: 0.3,
-        ease: "easeOut"
+        ease: easeOut
       }
     },
     tap: {

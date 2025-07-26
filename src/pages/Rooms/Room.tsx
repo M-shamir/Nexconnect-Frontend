@@ -7,6 +7,7 @@ import api from '../../services/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { easeOut } from 'framer-motion';
 
 interface Room {
   id: string;
@@ -81,7 +82,7 @@ export default function Rooms() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: 'easeOut' },
+      transition: { duration: 0.5, ease: easeOut },
     },
   };
 
@@ -89,7 +90,7 @@ export default function Rooms() {
     hover: {
       scale: 1.03,
       boxShadow: '0px 5px 15px rgba(59, 130, 246, 0.3)',
-      transition: { duration: 0.3, ease: 'easeOut' },
+      transition: { duration: 0.3, ease: easeOut },
     },
     tap: { scale: 0.98 },
   };

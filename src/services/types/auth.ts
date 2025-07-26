@@ -6,7 +6,7 @@ export interface SignUpData {
 
 export interface LoginData{
     username:string,
-    email :string
+    password:string
 }
 
 export interface AutheticationUser{

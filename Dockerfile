@@ -1,13 +1,10 @@
-# Frontend Dockerfile
 FROM node:20
 
 WORKDIR /app
 
-COPY package*.json ./
+# Use correct path relative to build context
+COPY Nexconnect/package*.json ./
 RUN npm install
 
-COPY . .
-
-EXPOSE 5173
-
-CMD ["npm", "run", "dev"]
+COPY Nexconnect . 
+CMD ["npm", "run", "dev", "--", "--host"]
