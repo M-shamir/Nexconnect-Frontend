@@ -5,7 +5,8 @@ class ChatSocket {
 
   connect(roomId: string, onMessage: MessageHandler): void {
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const url = `${protocol}://localhost:8000/ws/chat/${roomId}/`;
+    const host = import.meta.env.VITE_WS_HOST;
+    const url = `${protocol}://${host}/ws/chat/${roomId}/`;
 
     this.socket = new WebSocket(url);
 
