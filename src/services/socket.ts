@@ -10,7 +10,7 @@ export interface ChatSocket {
 }
 
 export function createChatSocket(roomId: string): ChatSocket {
-  const socket = new WebSocket(`${import.meta.env.VITE_WS_BASE_URL}${roomId}/`);
+  const socket = new WebSocket(`${import.meta.env.VITE_WS_HOST}${roomId}/`);
 
 
   let onMessageCallback: Callback = () => {};
